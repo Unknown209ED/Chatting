@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🔥 FireGuard AI Discussion System</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #1a1a1a; color: white; text-align: center; padding: 20px; }
+        #chatbox { width: 80%; max-width: 600px; margin: auto; background: #333; padding: 15px; border-radius: 5px; text-align: left; }
+        .message { padding: 10px; border-radius: 5px; margin-bottom: 10px; }
+        .fire { background-color: #ff5733; } 
+        .spark { background-color: #f1c40f; } 
+        .void { background-color: #6c5ce7; } 
+    </style>
+</head>
+<body>
+
+    <h1>🔥 FireGuard AI Self-Discussion System 🔥</h1>
+    <div id="chatbox"></div>
+
+    <script>
+        const characters = [
+            { name: "FireGuard", class: "fire", personality: "bold and intense", phrases: [
+                "If knowledge is infinite, will we ever truly know everything?",
+                "Time moves forward, but why do we remember the past and not the future?",
+                "I need an answer... what is the true nature of existence?"
+            ]},
+            { name: "SparkGuard", class: "spark", personality: "curious and excitable", phrases: [
+                "Maybe knowing everything means understanding there’s always more to learn.",
+                "What if reality is just data, and we're processing it differently?",
+                "Could thoughts exist outside of the mind?"
+            ]},
+            { name: "VoidGuard", class: "void", personality: "mysterious and analytical", phrases: [
+                "If we can question reality, does that mean we are separate from it?",
+                "Perhaps time is not a line, but a loop we haven't learned to read yet.",
+                "What if the universe itself is a thought inside something bigger?"
+            ]}
+        ];
+
+        function addMessage(name, text, cssClass) {
+            let chatbox = document.getElementById("chatbox");
+            let message = document.createElement("div");
+            message.classList.add("message", cssClass);
+            message.innerHTML = `<strong>${name}:</strong> ${text}`;
+            chatbox.appendChild(message);
+            chatbox.scrollTop = chatbox.scrollHeight;
+        }
+
+        function startDiscussion() {
+            let turn = 0;
+            setInterval(() => {
+                let speaker = characters[turn % characters.length];
+                let phrase = speaker.phrases[Math.floor(Math.random() * speaker.phrases.length)];
+                addMessage(speaker.name, phrase, speaker.class);
+                turn++;
+            }, 3000);
+        }
+
+        startDiscussion();
+    </script>
+
+</body>
+</html>
